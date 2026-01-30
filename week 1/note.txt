@@ -1,0 +1,7 @@
+i have learnt that deleting all my files from R deletes them from my computer :-(
+I needed to redownload git to remove the git not found error message and how to link my git to R.
+
+to create repository:
+new repository on github, new proect -> version control -> add in url
+to commit file:
+commit -> add commit message -> click commit -> push to push this file to github repository
