@@ -49,6 +49,25 @@ mosquito_egg_raw |>
 penguins_clean_names <- readRDS(url("https://github.com/UEABIO/5023B/raw/refs/heads/2026/files/penguins.RDS"))
 #reading in the data
 
-#str_trim removes the wh
+#str_trim removes the whitespace on either side of the string
+str_trim(" Adelie Penguin (Pygoscelis adeliae) ")
+
+#str_squish - ensures only one space between words
+str_squish("  Adelie    Penguin   (Pygoscelis   adeliae)  ")
+
+#str_truncate - shortens long strings to same specific length of phrase
+str_trunc("Adelie Penguin (Pygoscelis adeliae)", width = 18, side = "right")
+#full string is now "Adelie Penguin..."
+
+#str_split - splits things into small pieces based on separators
+str_split("Adelie Penguin (Pygoscelis adeliae)", " ")
+#split into "Adelie"      "Penguin"     "(Pygoscelis" "adeliae)"   
+
+#str_c joins text into one string separated by _
+str_c("Adelie", "Penguin", sep = "_")
+#adelie_penguin
+
+
+
 
 
