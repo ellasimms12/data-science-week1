@@ -98,5 +98,64 @@ penguins_clean_names |>
   )
 #need a logical test to decide if something is true or false
 #and a value if true and a value is false
+#maybe be dangerous if there is more than one true or false value (e.g MALE, male, Male)
 
+#renaming text values
+# use mutate and case_when 
+# for a statement that conditionally changes 
+# the names of the values in a variable
+penguins_clean_names |> 
+  mutate(species = stringr::word(species, 1)
+  ) |> 
+  mutate(sex = stringr::str_to_title(sex))
+#1 word in species title
+#made sex a title
 
+#changing species to uppercase
+# use mutate and case_when 
+# for a statement that conditionally changes 
+# the names of the values in a variable
+penguins_clean_names |> 
+  mutate(species = stringr::str_to_upper(species))
+
+#splitting columns
+#reducing down values but still retaining important information
+penguins_clean_names |> 
+  separate(
+    species,
+    into = c("species", "full_latin_name"),
+    sep = "(?=\\()"
+  ) 
+#would work if adelies name wasn't already altered lol
+
+#string matching
+#str_detect filters data and produces a true or false
+str_detect("Genus specificus", "Genus")
+# 3 possible names in species column
+penguins_clean_names |> distinct(species)
+penguins_clean_names |> 
+  mutate(species = case_when(
+    species == "Adelie" ~ "Adelie Penguin (Pygoscelis adeliae)",
+    species == "Gentoo" ~ "Gentoo penguin (Pygoscelis papua)",
+    species == "Chinstrap" ~ "Chinstrap penguin (Pygoscelis antarctica)",
+    .default = as.character(species)
+  )
+  )
+
+penguins_clean_names |>
+  filter(str_detect(species, "papua")) |>
+  select(species)
+#filters out only those names
+
+#removal of patterns
+# remove match for Genus (followed by a whitespace)
+str_remove("Genus specificus", pattern = "Genus ")
+
+#string removal to remove brackets from split names
+penguins_clean_names |> 
+  separate(
+    species,
+    into = c("species", "full_latin_name"),
+    sep = "(?=\\()" # regex pattern: split before the '('
+  ) |> 
+  mutate(full_latin_name = str_remove_all(full_latin_name, "[\\(\\)]"))
