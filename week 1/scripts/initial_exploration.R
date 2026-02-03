@@ -67,7 +67,36 @@ str_split("Adelie Penguin (Pygoscelis adeliae)", " ")
 str_c("Adelie", "Penguin", sep = "_")
 #adelie_penguin
 
+#dyplr - cleaning of strings
+
+penguins_clean_names |>  
+  distinct(sex)
+#only 3 distinct sex catergories - male, female, na
+#no need to update
+
+#case_when functions - changes things on a conditional basis
+#checks individual conditions changes when they are met
+
+#conditional change of the names of the values in a variable
+penguins_clean_names |> 
+  mutate(species = case_when(
+    species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+    species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo",
+    species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+    .default = as.character(species)
+  )
+  )
 
 
+#if_else
+#two-way decisions, based on if something is true or false
+
+penguins_clean_names |> 
+  mutate(sex = if_else(
+    sex == "MALE", "Male", "Female"
+  )
+  )
+#need a logical test to decide if something is true or false
+#and a value if true and a value is false
 
 
