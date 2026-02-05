@@ -136,8 +136,39 @@ CONNECTING TO MY DATA:
    [:) ] Flag them for later analysis that accounts for non-independence
    [ ] Other: ___________
    
+================================================================================
+TUTORIAL 3: CHECKING MISSING DATA PATTERNS - APPLICATION CHECKLIST
+================================================================================
+
+[:) ] I completed the tutorial exercises
 
 
+CONNECTING TO MY DATA:
+----------------------
 
+1. Did I identify any missing data questions in my Week 1 questions list?
+
+   [:) ] YES - Question #(s): is missing values for collecter important?
+   should missing values for body mass be removed?___________
+   [ ] NO - But I'll check anyway (missing data is common)
+
+
+2. Which variables have the most missing data?
+
+   Variable: eggs_laid | Percent missing: 7.8%
+   Variable: body_mass_mg | Percent missing:7.32%
+   Variable: eggs_hatched | Percent missing: 8.29%
+
+
+3. Missingness types checklist
+
+
+   [:)] MCAR (Missing Completely At Random) - appears random/scattered
+   [ ] MAR (Missing At Random) - related to other observed variables
+   [ ] MNAR (Missing Not At Random) - related to the missing value itself
+
+Why is it important to know what type of missing data we have? 
+if the data is MCAR, is it easier to remove than the other variables.
+no bias will be introduced by excluding this data
 
 ================================================================================
