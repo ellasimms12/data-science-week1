@@ -183,3 +183,91 @@ penguins_clean_names |>
     n_distinct(individual_id)
   )
 #344 variables, 190 distinct
+
+#dates
+library(lubridate)
+#reformatting dates
+date("2017-10-11T14:02:00")
+#date is now 2017-10-11
+dmy("11 October 2020")
+#2020-10-11
+mdy("10/11/2020")
+#2020-10-11
+df <- tibble(
+  date = c("X2020.01.22",
+           "X2020.01.22",
+           "X2020.01.22",
+           "X2020.01.22")
+)
+df %>%
+  mutate(
+    date = as_date(date, format = "X%Y.%m.%d")
+  )
+
+#extracting the year from the date - 2017
+year("2017-11-28T14:02:00")
+#extracting month - 11
+month("2017-11-28T14:02:00")
+#and so one with week, day
+
+#function need to deal with date that is imported as the number of days
+#since an origin date
+library(janitor)
+
+excel_numeric_to_date(42370)
+#2016-01-01
+
+#penguins is in ymd so dmy function should be used
+penguins_clean_names <- penguins_clean_names |>
+  mutate(date_egg_proper = lubridate::dmy(date_egg))
+
+penguins_clean_names |> 
+  summarise(min_date=min(date_egg),
+            max_date=max(date_egg))
+#summarising dates
+
+#extracting columns to order them by year
+penguins_clean_names <- penguins_clean_names |> 
+  mutate(year = lubridate::year(date_egg))
+
+#filtering datasets by date
+# return records after 2008
+penguins_clean_names |>
+  filter(date_egg >= ymd("2008-01-01"))
+
+#missing data
+
+penguins_clean_names |> 
+  group_by(species) |> 
+  summarise(mean = mean(body_mass_g))
+#data for the other two doesn't allow for a mean 
+library(naniar)
+naniar::vis_miss(penguins_clean_names)
+naniar::gg_miss_upset(penguins_clean_names)
+#most missing in comments
+#next highest is delta 13 and delta 15 together
+
+#returning all rows with missing variables
+penguins_clean_names |> 
+  filter(if_any(everything(), is.na)) |>
+  select(culmen_length_mm, culmen_depth_mm, flipper_length_mm, 
+         sex, delta_15_n_o_oo, delta_13_c_o_oo,comments,
+         everything()) # reorder columns
+
+#looking at specific columns 
+penguins_clean_names |> 
+  filter(if_any(culmen_length_mm, is.na))  # reorder columns
+
+#removing na values
+#drop.na drops all 
+#drop.na within a variable should be temporarily used for calculations
+#within other function na.rm=T can be used so na's are excused from the variable
+
+
+naniar::vis_miss(mosquito_egg_raw)
+
+
+
+
+
+
