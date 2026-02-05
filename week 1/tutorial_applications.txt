@@ -172,3 +172,77 @@ if the data is MCAR, is it easier to remove than the other variables.
 no bias will be introduced by excluding this data
 
 ================================================================================
+TUTORIAL 5: NUMERIC & CROSS-VARIABLE CONSISTENCY - APPLICATION CHECKLIST
+================================================================================
+
+[ ] I completed the tutorial exercises
+
+
+PART A: NUMERIC PLAUSIBILITY
+-----------------------------
+
+1. Did I identify any numeric plausibility questions in my Week 1 questions list?
+
+   [:)] YES - Question #(s): there are minus values for body mass
+   [ ] NO - Skip to Part B
+
+
+2. If YES, which numeric variable looks suspicious?
+
+   Variable name: body mass
+   
+   Minimum value: -93  | Is this biologically possible? [ ] Yes [x] No [ ] Unsure
+   Maximum value: 108.71  | Is this biologically possible? [x] Yes [ ] No [ ] Unsure
+   
+
+   Why do these look wrong?
+   [x] Negative value (impossible for this measurement)
+   [ ] Zero (should be NA instead)
+   [ ] Too large (exceeds known biological maximum)
+   [ ] Too small (below known biological minimum)
+   [ ] Possible units confusion (mixed kg and g?)
+   [ ] Other: ___________
+
+
+
+PART B: CROSS-VARIABLE CONSISTENCY
+-----------------------------------
+
+4. Did I identify any cross-variable questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - But I'll check anyway
+
+
+5. Choose TWO variables that should be related (e.g., body length and body mass,
+   sex and reproductive status, species and location):
+
+   Variable 1: eggs_laid
+   Variable 2: eggs_hatched
+   
+   What relationship do I expect between them?
+   [x] Positive correlation (both increase together)
+   [ ] Negative correlation (one increases, other decreases)
+   [ ] Biological constraint (certain combinations impossible)
+   [ ] Spatial constraint (certain combinations shouldn't occur)
+   [ ] Other: ___________
+   
+   Describe the expected relationship:
+   the number of eggs hatched will be less than the number of eggs laid.
+   as eggs laid increases so should egg hatched
+
+
+6. Think about consequences:
+
+   If these variables are inconsistent, what should I do?
+   [ ] Remove the observations
+   [ ] Convert one variable to NA (which one? _________)
+   [x] Flag for review but keep both
+   [ ] Query the data collector
+   [ ] Other: ___________
+   
+   Justification:
+   both are important values to be collected. they should be flagged to test
+   whether there are impossible values
+
+================================================================================
