@@ -1,0 +1,143 @@
+================================================================================
+TUTORIAL 1: CHECKING STRINGS - APPLICATION CHECKLIST
+================================================================================
+
+[:)] I completed the tutorial exercises
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any string-related questions in my Week 1 questions list?
+
+   [:)] YES - Question #(s): string consistency issues with treatment
+   [ ] NO - Skip to question 4
+
+
+2. If YES, which technique from this tutorial could help address my question?
+
+   [ ] str_to_lower() - standardize capitalization
+   [ ] str_to_upper() - standardize capitalization  
+   [ ] str_trim() - remove leading/trailing whitespace
+   [:)] str_replace() - fix typos or inconsistent spellings
+   [ ] Other: ___________
+   [ ] None of these apply
+
+
+3. Show what this technique would DO to my data:
+
+   Variable name: Treatment___________
+   
+   Example values BEFORE:
+   - Medium_dose, MEDIUM_DOSE, medium_dose
+   - High_dose, HIGH_DOSE, high_dose
+   - Control, CONTROL, control
+   
+   What they would become AFTER:
+   - medium_dose
+   - high_dose
+   - control
+
+
+4. If this tutorial is NOT relevant to my data:
+
+   Why not? (Check all that apply)
+   [ ] I don't have any character/text variables
+   [ ] My text variables are already clean
+   [ ] My string issues are different from what this tutorial covers
+   [ ] Other: ___________
+
+================================================================================
+TUTORIAL 2: CHECKING DATES - APPLICATION CHECKLIST
+================================================================================
+
+[ :)] I completed the tutorial exercises
+
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any date-related questions in my Week 1 questions list?
+
+   [:) ] YES - Question #(s): should dates be in dmy instead of ymd?
+   [ ] NO - Skip to question 5
+
+
+2. If YES, which technique from this tutorial could help address my question?
+
+   [:) ] dmy() / ymd() / mdy() - parse dates in different formats
+   [ ] excel_numeric_to_date() - convert Excel serial numbers
+   [ ] Checking for impossible dates (wrong day/month/year)
+   [ ] Other: ___________
+   [ ] None of these apply
+
+
+3. Show what this technique would DO to my data:
+
+   Variable name: ___collection_date________
+   
+   Example values BEFORE:
+   - 2023-05-23
+   - 2023-08-07
+   - 
+   
+   What they would become AFTER:
+   - 23-05-2023
+   - 07-08-2023
+   - 
+
+
+4. Think about consequences:
+
+   What assumption am I making about date format?
+   (e.g., "01/12/2023 is DD/MM/YYYY not MM/DD/YYYY")
+   that the 12th is the month not a date
+   
+   What could go wrong if this assumption is incorrect?
+   the dates would parse incorrectly as the some dates would be out of the range
+   e.g there is no 29th month
+   
+   How could I verify my assumption is correct?
+   use month("date")
+
+
+5. If this tutorial is NOT relevant to my data:
+
+   Why not?
+   [ ] I don't have any date variables
+   [ ] My dates are already in proper format
+   [ ] My date issues are different from what this tutorial covers
+   [ ] Other: ___________
+
+===============================================================================
+TUTORIAL 4: CHECKING DUPLICATES - APPLICATION CHECKLIST
+================================================================================
+
+[:) ] I completed the tutorial exercises
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any duplicate-related questions in my Week 1 questions list?
+
+   [ ] YES - Question #(s): ___________
+   [:) ] NO - But I'll check anyway
+
+
+3. Think about consequences:
+
+   If I remove duplicates, what am I assuming?
+   That it was an input error and not a valid measurement
+   
+   If duplicates are actually repeated measures, what should I do instead?
+   [ ] Keep them - they're legitimate observations
+   [:) ] Flag them for later analysis that accounts for non-independence
+   [ ] Other: ___________
+   
+
+
+
+
+================================================================================
