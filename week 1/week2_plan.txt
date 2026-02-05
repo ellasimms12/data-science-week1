@@ -1,0 +1,68 @@
+WEEK 2 CLEANING PLAN
+====================
+Name: [Ella Simms]
+Date: [05/02/2026]
+
+I've completed all 5 tutorials and application checklists.
+
+Looking across all my checklists, these are the 2 most important issues 
+to address in Week 2:
+
+
+ISSUE 1 (Most Important)
+-------------------------
+Brief description: [What's the problem? 1 sentence]
+identify if the negative values for weight are impossible
+
+Which tutorial provides the solution: [Tutorial name/number]
+5
+
+Which variable(s) affected: [Variable name(s)]
+body_mass_mg
+
+Why this is important to fix: [Biological/analytical reason]
+if these negative values aren't valid they will bias the results
+
+What I plan to do: [The technique I'll use, in plain English]
+filter them out, visualise with a boxplot and then remove if necessary
+
+
+ISSUE 2 (Second Most Important)
+--------------------------------
+Brief description: [What's the problem? 1 sentence]
+the different cases used in treatment
+Which tutorial provides the solution: [Tutorial name/number]
+1
+Which variable(s) affected: [Variable name(s)]
+treatment
+
+Why this is important to fix: [Biological/analytical reason]
+if analysing control, this will create more than the 4 catergories need
+
+What I plan to do: [The technique I'll use, in plain English]
+mutate the variables using if else or case when statements
+
+OTHER ISSUES I NOTICED (but won't fix in Week 2)
+-------------------------------------------------
+- [Issue 3 - will address later if time]
+negative values for mass
+- [Issue 4 - uncertain how to handle]
+date in ymd order, dmy is preferable but need to understand lubridate
+- [Issue 5 - decided to leave as-is because...]
+
+
+
+QUESTIONS TO DISCUSS IN WEEK 2
+-------------------------------
+Things I'm still unsure about:
+
+1. how to use lubridate when it returns this error:
+Warning message:
+There was 1 warning in mutate().
+ℹ In argument: date_egg_proper = lubridate::dmy(date_egg).
+Caused by warning:
+! All formats failed to parse. No formats found.
+
+2. 
+
+3.
