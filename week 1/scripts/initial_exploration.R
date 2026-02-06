@@ -412,21 +412,50 @@ summary(mosquito_egg_data_step1$body_mass_mg)
   # all those negative values would exclude a large amount of otherwise valid data.
   
   
-  # FIX 2: [Issue description]  ====
+  # FIX 2: [Issue description]  ==== there a multiple different cases for the variables within treatment.
 
 # Show the problem:
 # [Code]
+mosquito_egg_data_step1 |>
+  distinct(treatment)
+# 1 Medium_dose
+# 2 High_dose  
+# 3 high_dose  
+# 4 Low_dose   
+# 5 Control    
+# 6 HIGH_DOSE  
+# 7 MEDIUM_DOSE
+# 8 low_dose   
+# 9 control    
+# 10 LOW_DOSE   
+# 11 CONTROL    
+# 12 medium_dose
 
 # Fix it:
 mosquito_egg_data_step2 <- mosquito_egg_data_step1 |>
+  mutate(treatment = case_when(
+    treatment %in% c("CONTROL" , "Control") ~ "control", 
+    treatment  %in% c("High_dose", "HIGH_DOSE") ~ "high_dose", 
+    treatment  %in% c("Low_dose", "LOW_DOSE") ~ "low_dose", 
+    treatment  %in% c("Medium_dose", "MEDIUM_DOSE") ~ "medium_dose",
+    .default = as.character(treatment)
+  ))
   # YOUR CODE
-  
+
   
   # Verify it worked:
   # [Code]
-  
+mosquito_egg_data_step2 |>
+  distinct(treatment)
+# 1 medium_dose
+# 2 high_dose  
+# 3 low_dose   
+# 4 control
+
   # What changed and why it matters:
   # [2-3 sentences]
-  #
-#fixing issue number 1: removal of negative weight values, conversion into positive
+  # It changed because a vector was created containing all the variables which then converted each case into 
+  # the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
+  # of treatment, there would be 12 catergories instead of 4.
+
 
