@@ -121,4 +121,9 @@ mosquito_egg_data_step2 |>
   # the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
   # of treatment, there would be 12 catergories instead of 4.
 
-
+#fix 3 - using partners code 
+mosquito_egg_raw_cleaned <- mosquito_egg_raw |> 
+  drop_na(eggs_laid) |> 
+  drop_na(eggs_hatched) |> 
+  drop_na(body_mass_mg) 
+# drop na values for eggs_laid, eggs_hatched and body_mass_mg
