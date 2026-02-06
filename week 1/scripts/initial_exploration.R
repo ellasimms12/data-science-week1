@@ -382,3 +382,51 @@ penguins_flagged |>
     n_species_size = sum(!is.na(flag_species_size)),
     total_flagged = sum(any_flag)
   )
+
+
+# FIX 1: [Issue description] ==== there are negative values present in the weight catergory which otherwise would
+# be a completely valid measure of body mass in mg. using an assumption that these values are valid and 
+# there was an input error by where negatives were entered.
+
+# Show the problem:
+# [Code to demonstrate issue exists]
+summary(mosquito_egg_raw$body_mass_mg)
+#min value is -93, which is biologically impossible
+
+
+
+# Fix it:
+mosquito_egg_data_step1 <- mosquito_egg_raw |>
+   mutate(body_mass_mg = abs(body_mass_mg)) 
+  # YOUR CODE HERE
+  # converting to absolute values
+  
+  # Verify it worked:
+  # [Code to check change happened]
+summary(mosquito_egg_data_step1$body_mass_mg)
+#min value is now 3.80 which no longer negative value.
+  # What changed and why it matters:
+  # [2-3 sentences explaining consequences]
+  # Negative values have been converted into their absolute values. I felt this was a valid change as all
+  # negative values remained within a range that made sense with the other data present for body mass. Removing
+  # all those negative values would exclude a large amount of otherwise valid data.
+  
+  
+  # FIX 2: [Issue description]  ====
+
+# Show the problem:
+# [Code]
+
+# Fix it:
+mosquito_egg_data_step2 <- mosquito_egg_data_step1 |>
+  # YOUR CODE
+  
+  
+  # Verify it worked:
+  # [Code]
+  
+  # What changed and why it matters:
+  # [2-3 sentences]
+  #
+#fixing issue number 1: removal of negative weight values, conversion into positive
+
